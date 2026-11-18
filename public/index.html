@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>Side by AI 키오스크</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="kiosk">
+  <main class="chat">
+    <header>
+      <h1>무엇이든 물어보세요</h1>
+      <p id="status" class="status" hidden></p>
+    </header>
+    <div id="log" class="log" aria-live="polite"></div>
+    <form id="ask" class="ask">
+      <button type="button" id="mic" class="icon" aria-label="말로 물어보기" hidden>🎤</button>
+      <input id="text" autocomplete="off" placeholder="예) 이 자켓 실측 사이즈가 어떻게 되나요?" maxlength="500">
+      <button type="submit" class="primary">보내기</button>
+    </form>
+  </main>
+
+  <aside class="cart">
+    <h2>장바구니</h2>
+    <p class="hint">상품 바코드를 리더기에 찍으면 담깁니다.</p>
+    <ul id="items"></ul>
+    <div class="total"><span>합계</span><strong id="total">0원</strong></div>
+    <button id="pay" class="primary big" disabled>결제하기</button>
+    <div class="row">
+      <label class="button">
+        가격표 촬영
+        <input id="tag" type="file" accept="image/*" capture="environment" hidden>
+      </label>
+      <button id="call">사장님 호출</button>
+    </div>
+    <label class="tts"><input id="speak" type="checkbox"> 답변을 소리로 듣기</label>
+  </aside>
+
+  <div id="overlay" class="overlay" hidden>
+    <div class="sheet" id="sheet"></div>
+  </div>
+
+  <script src="/kiosk.js"></script>
+</body>
+</html>

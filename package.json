@@ -1,0 +1,22 @@
+{
+  "name": "side-by-ai",
+  "version": "0.1.0",
+  "description": "소상공인이 직접 설정해 쓰는 오픈소스 AI 점원 키오스크 (무인샵형)",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayyi418/side-by-ai.git"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.10.0"
+  }
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "p_sample01",
+    "name": "[예시] 90s 울 체크 블레이저",
+    "price": 48000,
+    "stock": 1,
+    "barcode": "2000000000015",
+    "category": "아우터",
+    "size": "어깨 46 / 가슴 54 / 총장 72 (cm)",
+    "material": "울 100%",
+    "condition": "A급, 안감 미세 사용감",
+    "description": "드라이클리닝 권장"
+  },
+  {
+    "id": "p_sample02",
+    "name": "[예시] 리바이스 501 데님 팬츠",
+    "price": 39000,
+    "stock": 1,
+    "barcode": "2000000000022",
+    "category": "하의",
+    "size": "허리 39 / 밑위 30 / 총장 104 (cm)",
+    "material": "면 100%",
+    "condition": "B급, 밑단 자연스러운 해짐",
+    "description": "단독 세탁"
+  },
+  {
+    "id": "p_sample03",
+    "name": "[예시] 빈티지 실크 스카프",
+    "price": 15000,
+    "stock": 3,
+    "barcode": "2000000000039",
+    "category": "소품",
+    "size": "70 × 70 (cm)",
+    "material": "실크",
+    "condition": "A급",
+    "description": "손세탁 또는 드라이클리닝"
+  },
+  {
+    "id": "p_sample04",
+    "name": "[예시] 가죽 숄더백",
+    "price": 62000,
+    "stock": 0,
+    "barcode": "2000000000046",
+    "category": "소품",
+    "size": "가로 28 / 세로 20 (cm)",
+    "material": "소가죽",
+    "condition": "B급, 모서리 스크래치",
+    "description": ""
+  }
+]

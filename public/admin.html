@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Side by AI 관리</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="admin">
+    <section id="login" class="card">
+      <h2>사장님 관리 화면</h2>
+      <form id="login-form" class="row">
+        <input id="pin" type="password" inputmode="numeric" placeholder="관리자 PIN" autocomplete="off">
+        <button class="primary">들어가기</button>
+      </form>
+      <p id="login-msg" class="msg"></p>
+    </section>
+
+    <div id="app" hidden>
+      <header>
+        <h1>Side by AI 관리</h1>
+        <nav class="tabs" role="tablist">
+          <button data-tab="card" aria-selected="true">가게 카드</button>
+          <button data-tab="products" aria-selected="false">상품</button>
+          <button data-tab="sales" aria-selected="false">매출·주문</button>
+          <button data-tab="log" aria-selected="false">응대 기록</button>
+        </nav>
+      </header>
+
+      <section data-panel="card" class="card">
+        <h2>가게 카드</h2>
+        <p class="note">우리 가게의 규칙을 평소 말하듯 적어 주세요. 여기 적힌 내용이 그대로 AI 점원의 응대 규칙이 됩니다.</p>
+        <div class="field">
+          <textarea id="card-text" placeholder="예) 우리 가게는 빈티지 특성상 교환·환불이 안 돼요. 사이즈는 꼭 실측 기준으로 안내해 주세요."></textarea>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <button id="card-dictate" hidden>🎤 말로 추가하기</button>
+          <button id="card-save" class="primary">저장</button>
+        </div>
+        <p id="card-msg" class="msg"></p>
+      </section>
+
+      <section data-panel="products" hidden>
+        <div class="card">
+          <h2 id="product-title">상품 등록</h2>
+          <p class="note">바코드 칸을 누르고 리더기로 상품의 바코드(또는 붙여 둔 바코드 스티커)를 찍으면 자동으로 입력됩니다.</p>
+          <form id="product-form">
+            <input type="hidden" name="id">
+            <div class="grid">
+              <label>바코드<input name="barcode" autocomplete="off"></label>
+              <label>상품명 *<input name="name" required></label>
+              <label>가격(원) *<input name="price" type="number" min="0" step="1" required></label>
+              <label>재고<input name="stock" type="number" min="0" step="1" value="1"></label>
+              <label>분류<input name="category" placeholder="아우터, 소품…"></label>
+              <label>사이즈(실측)<input name="size" placeholder="어깨 46 / 가슴 54 / 총장 68"></label>
+              <label>소재<input name="material" placeholder="울 100%"></label>
+              <label>상태<input name="condition" placeholder="A급, 소매 미세 오염"></label>
+            </div>
+            <label class="field" style="margin-top:10px">설명·세탁법 등
+              <input name="description">
+            </label>
+            <div class="row" style="margin-top:10px">
+              <button type="button" id="product-reset">새로 입력</button>
+              <button class="primary">저장</button>
+            </div>
+            <p id="product-msg" class="msg"></p>
+          </form>
+        </div>
+        <div class="card scroll">
+          <table>
+            <thead><tr><th>상품</th><th>바코드</th><th class="num">가격</th><th class="num">재고</th><th></th></tr></thead>
+            <tbody id="product-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section data-panel="sales" hidden>
+        <div class="card">
+          <div class="row" style="align-items:center;margin-bottom:12px">
+            <h2>매출·주문</h2>
+            <input id="sales-date" type="date">
+          </div>
+          <div class="stats">
+            <div class="stat">입금 확인 완료<strong id="stat-confirmed">-</strong></div>
+            <div class="stat">확인 대기 (손님이 송금했다고 누름)<strong id="stat-waiting">-</strong></div>
+          </div>
+          <p class="note">키오스크는 실제 입금을 확인하지 못합니다. 은행·간편결제 앱에서 입금을 확인한 뒤 '입금 확인'을 눌러 주세요.</p>
+        </div>
+        <div class="card scroll">
+          <table>
+            <thead><tr><th>시각</th><th>내용</th><th class="num">금액</th><th>상태</th><th></th></tr></thead>
+            <tbody id="order-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section data-panel="log" hidden>
+        <div class="card">
+          <div class="row" style="align-items:center;margin-bottom:12px">
+            <h2>응대 기록</h2>
+            <input id="log-date" type="date">
+          </div>
+          <p class="note">손님이 무엇을 물었고 AI 가 어떻게 답했는지 확인하고, 틀린 답이 있으면 가게 카드나 상품 정보를 고쳐 주세요. 음성과 사진은 저장하지 않습니다.</p>
+        </div>
+        <div class="card scroll">
+          <table>
+            <thead><tr><th>시각</th><th>종류</th><th>내용</th></tr></thead>
+            <tbody id="log-rows"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script src="/admin.js"></script>
+</body>
+</html>
